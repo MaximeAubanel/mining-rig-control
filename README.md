@@ -16,9 +16,11 @@ Alright. The first thing that you need in order to control your rig remotely is 
 
 If your ISP do not provide you a static IP, we will use a dynamic DNS. Indeed, it's not a static IP address but it's an address (like "http://whaterver.io") which is supposed to always point to the object with a dynamic IP that it has been connected to (here our router).
 
-We are then going to use [no-ip](https://www.noip.com) which will allow us to have a dynamic DNS and therefore an address only pointing to our router :
+We are then going to use [no-ip](https://www.noip.com) which will allow us to have a dynamic DNS and therefore an address pointing indefinitly to our router :
 
 - Create an account
 - Register an hostname
 
-Once this is done, go to your router configuration page, it should be [192.168.1.1](192.168.1.1)
+Once this is done, go to your router configuration page, it should be [192.168.1.1](192.168.1.1) and search for something about "Dynamic DNS". Usually they should ask you about your login and password (that you setted 3 lines above).
+
+To make sure that everything is working just type on google the hostname you created. For instance, if you created the hostname "helloworld.ddns.me" then just type it on google address search bar. If everything worked, you should be able to see the EXACT same thing on helloworld.ddns.me and 192.168.1.1.

@@ -18,9 +18,9 @@ This tutorial will explain you how to control your mining rig from all over the 
 
 Alright. The first thing that you need in order to control your rig remotely is a static IP. If you are not using a static IP you'll need to know the public IP of your rig, and it can change at anytime (depends on ISP). Moreover, if you are in Mexico and you want to access your rig which is based in New York, how are you suppose to know its public IP.
 
-If your ISP do not provide you a static IP, we will use a dynamic DNS. Indeed, it's not a static IP address but it's an address (like "http://whaterver.io") which is supposed to always point to the object with a dynamic IP that it has been connected to (here our router).
+To solve this issue, we will use a dynamic DNS. Basically, it's an address (like "http://helloworld.ddns.me") which is supposed to always point to the object it has been connected to (here our router).
 
-We are then going to use [no-ip](https://www.noip.com) which will allow us to have a dynamic DNS and therefore an address pointing indefinitly to our router :
+To do so we are going to use [no-ip](https://www.noip.com) which will allow us to have a dynamic DNS and therefore an address pointing indefinitly to our router :
 
 - Create an account
 - Register an hostname
@@ -39,14 +39,14 @@ We need now to give to all of our electronic device (server and mining rigs only
 
 ## Step III - Port configuration
 
-In order to connect to our server by SSH (which use natively the port 22) we need to tell someone that if it request access to the port 22 he will be directly redirected to the server. To do so we need to do a port forwarding and forward the port 22 of our box to our server. Like this, if someone try to access to the port 22 of our box, he will be redirect to the server on the port 22.
+In order to connect to our server by SSH (which use natively the port 22) we need to tell someone that if it request access to the port 22 he will be directly redirected to the server. To do so we need to port forward the port 22 of our box to our server's port 22. Like this, if someone try to access to the port 22 of our box, he will be redirect to the server on the port 22.
 
 I won't explain you here how to port forward. There is plenty of tutorial out there. Just write on google : $(theNameOfYourRouter) + "port forward tutorial".
 
 ## Step III - Connect to it
 
 So now, we should have:
-- a dynamic DNS which redirecting to our router
+- a dynamic DNS which redirecting to our router (and on the server on the port 22)
 - a local static IP address for our server and each mining rigs
 - our router's port 22 forwarded to our server's port 22
 
@@ -60,7 +60,9 @@ The default ssh password of a raspberry Pi is "raspberry" but change it rigth no
 
 Now that you have access to your home server by SSH, you can then access to your mining rigs by connecting to them with SSH again, ssh inside shh .. (SSHception). Remember that we set static local IP address for all of our mining rig, so we know the local IP of each rig, and most importantly, it won't change !
 
-To do, open the SSH config file (on the server, not on your computer) :
+For convenience only you can store each IP of your rig. 
+
+Open the SSH config file (on the server, not on your computer) :
 
 ``` nano ~/.ssh/config ```
 
@@ -72,7 +74,7 @@ Host rig1
     User ethos
 ```
 
-Now, you can access to your rigs by simply doing :
+Now, you can access to your rigs (from your server) by simply doing :
 
 ``` ssh rig1 ```
 
